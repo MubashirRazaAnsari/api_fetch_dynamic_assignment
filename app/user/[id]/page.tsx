@@ -28,7 +28,7 @@ interface ApiRes {
   company: ApiResCompany;
 }
 
-const page = async ({ params }: { params: { id: number } }) => {
+const page = async ({ params }: { params: Promise<{ id: number }> }) => {
   const id = (await params).id;
   const api = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
   const data: ApiRes = await api.json();
